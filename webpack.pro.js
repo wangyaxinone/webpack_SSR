@@ -78,7 +78,7 @@ module.exports = {
             title:'index',
             cache:true,
             showErrors:true,
-            chunks:['index','manifest']
+            chunks:['index','manifest','vendor']
         }),
         new HtmlWebpackPlugin({
             filename:path.join(__dirname,'/server/views/dist/login.ejs'),
@@ -87,7 +87,7 @@ module.exports = {
             title:'login',
             cache:true,
             showErrors:true,
-            chunks:['main','manifest']
+            chunks:['main','manifest','vendor']
         }),
        
         // new webpack.optimize.CommonsChunkPlugin({
@@ -98,6 +98,7 @@ module.exports = {
     optimization: {
         splitChunks: {
             chunks: "all", // 必须三选一： "initial" | "all"(默认就是all) | "async"
+            minSize: 1000,
             cacheGroups: {
                 vendor: {
                     name: "vendor",
