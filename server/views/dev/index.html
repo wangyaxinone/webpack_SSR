@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><%= title%></title>
+</head>
+<body>3
+    2
+    <% if (user) { %>
+        <h2><%= user.name %></h2>
+      <% } %>
+      <anchored-heading :level="1">Hello world!</anchored-heading>
+    <div class="total-container">
+        <div class="first-note">This is page1.</div>
+        <br>
+        <div id="draw" class="image-example-page1"></div>
+    </div>
+    <%- Dll %>
+    <% if (env=="dev" && reload) { %>
+       
+        <script src="/reload/reload.js"></script>
+        <script src="/index.js"></script>
+    <% } %>
+</body>
+</html>
