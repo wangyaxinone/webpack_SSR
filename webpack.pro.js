@@ -40,7 +40,7 @@ module.exports = {
                 
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    publicPath:'/static',
+                    //publicPath:'/static/',
                     use: [ {
                         loader: "css-loader" 
                     }, {
@@ -57,7 +57,7 @@ module.exports = {
     　　　　　　test: /\.(png|jpg)$/,
     　　　　　　use: [
                     {
-                        loader:'url-loader?limit=8192&name=images/[hash:8].[name].[ext]'
+                        loader:'url-loader?limit=8192&name=images/[name]-[hash:8].[ext]'
                     }
                 ]
     　　　　}
