@@ -28,7 +28,7 @@ $ npm run start
 | 命令            | 作用&效果          |
 | --------------- | ------------- |
 | npm run build   | 根据`webpack.pro.js`，build出一份生产环境的代码 |
-| npm run pro     | 根据`webpack.pro.js`，build出一份开发环境的代码 |
+| npm run pro     | 根据`webpack.pro.js`，build出一份开发环境的代码并自动开启node服务器 |
 | npm run start   | **推荐实际开发时使用此项
 ## 更新日志
 
