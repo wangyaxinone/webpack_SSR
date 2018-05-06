@@ -4,14 +4,19 @@ var webpack = require('webpack');
 var path = require('path');
 var publicPath = 'http://localhost:3000/';
 var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
+var entry= require('./build/entry.config.js');
+
+
+for(var key in entry){
+    var arr = [entry[key]];
+    arr.push(hotMiddlewareScript);
+    entry[key] = arr;
+}
+
 module.exports = {
     mode:'development',
     devtool:'inline-source-map',
-    entry:{
-        'index':['./src/script/index.js',hotMiddlewareScript],
-        'main':['./src/script/main.js',hotMiddlewareScript],
-        
-    },
+    entry:entry,
     module: {
         rules: [
             {

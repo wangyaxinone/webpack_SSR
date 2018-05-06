@@ -2,16 +2,12 @@
 var webpack = require('webpack');
 var path = require('path');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackPlugin= require('./build/HtmlWebpackPlugin.config.js');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     mode:'production',
     //devtool:'source-map',
-    entry:{
-        'index':['./src/script/index.js'],
-        'main':['./src/script/main.js'],
-        //'vendor':['vue','vuex','vue-router']
-    },
+    entry:require('./build/entry.config.js'),
    
     output:{
         filename: 'js/[name]-[chunkhash:6].js',
@@ -71,24 +67,25 @@ module.exports = {
         new WebpackCleanupPlugin({
             exclude:["bli/**"]
         }),
-        new HtmlWebpackPlugin({
-            filename:path.join(__dirname,'/server/views/dist/index.ejs'),
-            template:'./server/views/dev/index.html',
-            inject:'body',
-            title:'index',
-            cache:true,
-            showErrors:true,
-            chunks:['index','manifest','vendor']
-        }),
-        new HtmlWebpackPlugin({
-            filename:path.join(__dirname,'/server/views/dist/login.ejs'),
-            template:'./server/views/dev/login.html',
-            inject:'body',
-            title:'login',
-            cache:true,
-            showErrors:true,
-            chunks:['main','manifest','vendor']
-        }),
+        ...HtmlWebpackPlugin,
+        // new HtmlWebpackPlugin({
+        //     filename:path.join(__dirname,'/server/views/dist/index.ejs'),
+        //     template:'./server/views/dev/index.html',
+        //     inject:'body',
+        //     title:'index',
+        //     cache:true,
+        //     showErrors:true,
+        //     chunks:['index','manifest','vendor']
+        // }),
+        // new HtmlWebpackPlugin({
+        //     filename:path.join(__dirname,'/server/views/dist/login.ejs'),
+        //     template:'./server/views/dev/login.html',
+        //     inject:'body',
+        //     title:'login',
+        //     cache:true,
+        //     showErrors:true,
+        //     chunks:['main','manifest','vendor']
+        // }),
        
         // new webpack.optimize.CommonsChunkPlugin({
         //     // 将公共代码打包成以common命名的js文件
