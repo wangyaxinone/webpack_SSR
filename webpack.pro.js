@@ -12,7 +12,7 @@ module.exports = {
     output:{
         filename: 'js/[name]-[chunkhash:6].js',
         path: path.join(__dirname,'/public/'),
-        publicPath: '/static'
+        publicPath: '/static/'
     },
     module: {
         rules: [
@@ -52,7 +52,15 @@ module.exports = {
                     }]
                 })
                 
-            }
+            },
+            {
+    　　　　　　test: /\.(png|jpg)$/,
+    　　　　　　use: [
+                    {
+                        loader:'url-loader?limit=8192&name=images/[hash:8].[name].[ext]'
+                    }
+                ]
+    　　　　}
         ]
     },
     plugins: [

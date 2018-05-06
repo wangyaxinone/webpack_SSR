@@ -9,7 +9,7 @@ fs.readdirSync(path_resolve.views).forEach((obj,idx)=>{
     var name = obj.slice(0,obj.indexOf('.'));
     htmlWP.push(new HtmlWebpackPlugin({
         filename:path.join(path_resolve.root,'/server/views/dist/'+name+'.ejs'),
-        template:'./server/views/dev/'+name+'.html',
+        template:path.join(path_resolve.root,'/src/html/'+name+'.html'),
         inject:'body',
         title:name,
         cache:true,

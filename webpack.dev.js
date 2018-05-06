@@ -53,7 +53,15 @@ module.exports = {
                         
                     }]
                 
-            }
+            },
+            {
+    　　　　　　test: /\.(png|jpg)$/,
+    　　　　　　use: [
+                    {
+                        loader:'url-loader?limit=8192&name=images/[hash:8].[name].[ext]'
+                    }
+                ]
+    　　　　}
         ]
     },
     output:{

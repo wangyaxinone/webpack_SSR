@@ -24,7 +24,7 @@ app.use(app.middleware);
 if(process.env.NODE_ENV==='dev'){
     app.locals.Dll = "<script src='/bli/"+bundleConfig.vendor.js+"'></script>";
     app.engine('html', consolidate.ejs);
-    app.set('views','./server/views/dev')
+    app.set('views','./src/html')
     app.set('view engine','html')
     var compiler = webpack(webpackDevConfig);
 
@@ -40,6 +40,7 @@ if(process.env.NODE_ENV==='dev'){
     }));
     app.use(webpackHotMiddleware(compiler));
     app.use(express.static("public"))
+    app.use(express.static("src"))
     app.get('/', function (req, res) {
         //res.send('1212')
         res.render('index',{
@@ -92,4 +93,5 @@ if(process.env.NODE_ENV==='dev'){
     app.use('/bli',express.static('public/bli'));
     app.use('/static/js',express.static('public/js'));
     app.use('/static/css',express.static('public/css'));
+    app.use('/static/images',express.static('public/images'));
 }
